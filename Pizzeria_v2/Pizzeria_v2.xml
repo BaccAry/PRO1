@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pizzeria_v2</name>
+    </assembly>
+    <members>
+        <member name="M:PRO1.Controllers.PizzasController.GetPizzas">
+            <summary>
+            Metoda zwracadane o pizzach
+            </summary>
+            <returns>Lista pizz</returns>
+        </member>
+    </members>
+</doc>

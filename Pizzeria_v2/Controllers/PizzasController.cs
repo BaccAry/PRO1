@@ -20,6 +20,10 @@ namespace PRO1.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// Metoda zwraca dane o pizzach
+        /// </summary>
+        /// <returns>Lista pizz</returns>
         [HttpGet]
         public IActionResult GetPizzas()
         {

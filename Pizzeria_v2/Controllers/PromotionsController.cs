@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Pizzeria_v2.Models;
 
 namespace PRO1.Controllers
@@ -38,6 +39,42 @@ namespace PRO1.Controllers
             {
                 return Ok(user);
             }
+        }
+        [HttpPost]
+        public IActionResult CreatePromotions(Promocja newPromotion)
+        {
+            _context.Promocja.Add(newPromotion);
+            _context.SaveChanges();
+
+            return StatusCode(201, newPromotion);
+        }
+        [HttpPut]
+        public IActionResult UpdatePromocja(Promocja updatedPromotion)
+        {
+            if (_context.Promocja.Count(e => e.IdPromocja == updatedPromotion.IdPromocja) == 0)
+            {
+                return NotFound();
+            }
+
+            _context.Promocja.Attach(updatedPromotion);
+            _context.Entry(updatedPromotion).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return Ok(updatedPromotion);
+        }
+        [HttpDelete("{IdPromocja:int}")]
+        public IActionResult DeletePromocja(int IdPromotion)
+        {
+            var promo = _context.Promocja.FirstOrDefault(e => e.IdPromocja == IdPromotion);
+            if (promo == null)
+            {
+                return NotFound();
+            }
+
+            _context.Promocja.Remove(promo);
+            _context.SaveChanges();
+
+            return Ok(promo);
         }
     }
 }

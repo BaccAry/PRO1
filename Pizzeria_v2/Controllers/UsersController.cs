@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Pizzeria_v2.Models;
 
 namespace PRO1.Controllers
@@ -37,6 +38,42 @@ namespace PRO1.Controllers
             {
                 return Ok(user);
             }
+        }
+        [HttpPost]
+        public IActionResult CreateUser(Uzytkownik newUser)
+        {
+            _context.Uzytkownik.Add(newUser);
+            _context.SaveChanges();
+
+            return StatusCode(201, newUser);
+        }
+        [HttpPut]
+        public IActionResult UpdateUser(Uzytkownik updatedUser)
+        {
+            if (_context.Uzytkownik.Count(e => e.IdUzytkownik == updatedUser.IdUzytkownik) == 0)
+            {
+                return NotFound();
+            }
+
+            _context.Uzytkownik.Attach(updatedUser);
+            _context.Entry(updatedUser).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return Ok(updatedUser);
+        }
+        [HttpDelete("{IdUser:int}")]
+        public IActionResult DeleteUser(int IdUser)
+        {
+            var user = _context.Uzytkownik.FirstOrDefault(e => e.IdUzytkownik == IdUser);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            _context.Uzytkownik.Remove(user);
+            _context.SaveChanges();
+
+            return Ok(user);
         }
     }
 }

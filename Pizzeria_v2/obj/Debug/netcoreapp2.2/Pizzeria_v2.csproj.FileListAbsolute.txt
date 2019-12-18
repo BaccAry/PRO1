@@ -12,3 +12,4 @@ C:\Users\s17230\Desktop\Pizzeria_v2\obj\Debug\netcoreapp2.2\Pizzeria_v2.RazorTar
 C:\Users\s17230\Desktop\Pizzeria_v2\bin\Debug\netcoreapp2.2\Pizzeria_v2.pdb
 C:\Users\s17230\Desktop\Pizzeria_v2\obj\Debug\netcoreapp2.2\Pizzeria_v2.dll
 C:\Users\s17230\Desktop\Pizzeria_v2\obj\Debug\netcoreapp2.2\Pizzeria_v2.pdb
+C:\Users\s17230\Desktop\Pizzeria_v2\bin\Debug\netcoreapp2.2\Pizzeria_v2.xml
